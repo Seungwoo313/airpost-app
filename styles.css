@@ -66,8 +66,7 @@ img { display: block; max-width: none; }
 
 .top-actions { display: flex; align-items: center; gap: 10px; }
 
-.lang,
-.store-pill {
+.lang {
   display: flex;
   align-items: center;
   height: 36px;
@@ -95,13 +94,15 @@ img { display: block; max-width: none; }
 
 .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
 
-.store-pill {
-  padding: 0 15px;
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
+/* Apple의 공식 App Store 배지. 모양과 색은 바꾸지 않고 높이만 정한다(화면에서 40px 이상). */
+.store-badge,
+.cta-badge { display: inline-block; line-height: 0; border-radius: 9px; }
+.store-badge img,
+.cta-badge img { display: block; width: auto; }
+.store-badge img { height: 40px; }
+.cta-badge img { height: 54px; }
+.store-badge:focus-visible,
+.cta-badge:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 .top { transition: background 0.4s, box-shadow 0.4s; }
 .top.solid {
@@ -356,19 +357,6 @@ html[lang="ko"] .hint { font-family: var(--font-ui); letter-spacing: 0.04em; fon
 
 .cta { margin: 22px 0 0; }
 
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  height: 50px;
-  padding: 0 24px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  box-shadow: 0 10px 30px rgba(80, 50, 30, 0.18);
-}
 
 /* Scene */
 
@@ -1645,11 +1633,11 @@ html[data-layout="tall"] .cap h2 { font-size: clamp(26px, 7.4vw, 38px); }
 html[data-layout="tall"] .lede { margin-top: 10px; font-size: 15px; }
 html[data-layout="tall"] .cap-hero .lede { margin-top: 18px; font-size: 16px; }
 html[data-layout="tall"] .cta { margin-top: 16px; }
-html[data-layout="tall"] .cta-button { height: 46px; }
+html[data-layout="tall"] .cta-badge img { height: 48px; }
 
 @media (max-width: 560px) {
   .brand span { display: none; }
-  .store-pill { display: none; }
+  .store-badge { display: none; }
   .board { grid-template-columns: auto 1fr auto; gap: 12px; padding: 10px 14px; }
   .b-status { grid-column: 1 / -1; min-width: 0; padding: 6px 10px; font-size: 11px; }
 }

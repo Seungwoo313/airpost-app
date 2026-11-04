@@ -66,8 +66,8 @@
       "close.body": "Airpost for iPhone and iPad.",
       "foot.contact": "Contact",
       "faq.note": "Anything else? Email us.",
-      "store.short": "Coming soon",
-      "store.long": "Coming soon on the App Store",
+      "store.badge": "assets/badges/app-store-en.svg",
+      "store.alt": "Download on the App Store",
       "store.platforms": "iPhone · iPad",
       "t.seoul": "Seoul",
       "t.sydney": "Sydney",
@@ -145,8 +145,8 @@
       "close.body": "iPhone과 iPad용 Airpost",
       "foot.contact": "문의",
       "faq.note": "더 궁금한 점은 메일로 보내 주세요.",
-      "store.short": "출시 예정",
-      "store.long": "App Store 출시 예정",
+      "store.badge": "assets/badges/app-store-ko.svg",
+      "store.alt": "App Store에서 다운로드하기",
       "store.platforms": "iPhone · iPad",
       "t.seoul": "서울",
       "t.sydney": "시드니",
@@ -194,6 +194,15 @@
     document.querySelectorAll("[data-i18n-href]").forEach((el) => {
       const value = dict[el.dataset.i18nHref];
       if (value) el.href = value;
+    });
+    // App Store 배지는 Apple이 언어별로 주는 공식 이미지를 그대로 쓴다.
+    document.querySelectorAll("[data-i18n-src]").forEach((el) => {
+      const value = dict[el.dataset.i18nSrc];
+      if (value && el.getAttribute("src") !== value) el.setAttribute("src", value);
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      const value = dict[el.dataset.i18nAlt];
+      if (value != null) el.alt = value;
     });
     document.querySelectorAll(".lang button").forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
